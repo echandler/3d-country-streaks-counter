@@ -2545,7 +2545,7 @@ app.wrongAnswerColor = "#ee0000";
 
 app.onlyCountCorrectAnswers = false;
 
-app.counters = [make3DCounter, normalCounter, SubSymetrysCounteryStreakCounterAutomated];
+app.counters = [make3DCounter];
 app.countersx = localStorage["streakCounterIDX"] || 0;
 app.curCounter = null;
 
