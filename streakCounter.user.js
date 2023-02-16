@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         3d streak counter v1.1
+// @name         3d streak counter v1.2
 // @namespace    GeoGuessr scripts
-// @version      1.1
+// @version      1.2
 // @description  Show possible countries to guess.
 // @include      https://*geoguessr.com/*
 // @license      MIT
