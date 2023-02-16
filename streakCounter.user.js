@@ -557,7 +557,7 @@ class make3DCounter {
     appendToDOM(){
         this.appendTODOMInterval = setInterval(()=>{
                 let el = document.querySelector('div[data-qa="round-number"]');
-                let isStreaks = \streak\i.test(el?.innerHTML);
+                let isStreaks = /streak/i.test(el?.innerHTML);
 
                 if (!el || isStreaks){
                     this.container.style.display = 'none';
@@ -1315,7 +1315,7 @@ class make3DCounter {
              if (this.clonedEl) return false;
 
              let el = document.querySelector('div[data-qa="round-number"]');
-             let isStreaks = \streak\i.test(el?.innerHTML);
+             let isStreaks = /streak/i.test(el?.innerHTML);
              let container = this.renderer.domElement;
 
              if(!el || isStreaks) return false;
