@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         3d streak counter v1.2
+// @name         3d streak counter v1.3
 // @namespace    GeoGuessr scripts
-// @version      1.2
+// @version      1.3
 // @description  Show possible countries to guess.
 // @include      https://*geoguessr.com/*
 // @license      MIT
@@ -2171,7 +2171,7 @@ function setMouseOverCountryHighlight(){
 
             lastTime = Date.now();
 
-            let country = unsafeWindow.testObj.findIt(evt.latLng.lat(), evt.latLng.lng());
+            let country = unsafeWindow.sgs.findIt(evt.latLng.lat(), evt.latLng.lng());
 
             if (country == lastCountry) return;
 
@@ -2286,7 +2286,7 @@ let _playingGameImmediate = on('playingGameImmediate', async function(args){
     _this._gameCountry = false;
 
     if (country !== false) {
-        _this._gameCountry = usw.testObj.__countryDict[_this._country.country.country_code.toUpperCase()];
+        _this._gameCountry = usw.sgs.admin_country_index[_this._country.country.country_code.toUpperCase()];
     }
 
     _this.isCorrect = /correct/.test(_this.div.innerHTML);
@@ -2434,9 +2434,9 @@ function makePoly(country, color, map, opacity) {
     //return makeMarker(country, color, map, opacity);
     let coords = [];
     let n = 0;
-   // let ca = usw.testObj.__c;
+    let ca = usw.sgs.compiledPolygons;
 	
-    let ca = __t;
+   // let ca = usw.sgs.ggPolygons;
 
     country = (typeof country === 'string')? country.toLowerCase(): country;
 
@@ -2459,7 +2459,7 @@ function makePoly(country, color, map, opacity) {
         strokeColor:  "#ffffff",
         strokeOpacity: 0.8,
         strokeWeight: 0.35,
-        fillColor: usw.testObj.bordersConfig[country] ? 'blue' : (color || "#00ff00"),
+        fillColor: usw.sgs.customBorders[country] ? 'blue' : (color || "#00ff00"),
         fillOpacity: opacity || 0.25,
         clickable: false,
     });
@@ -2546,7 +2546,7 @@ app.wrongAnswerColor = "#ee0000";
 app.onlyCountCorrectAnswers = false;
 
 app.counters = [make3DCounter];
-app.countersx = localStorage["streakCounterIDX"] || 0;
+app.countersx = localStorage["streakCounterIDX"] || 1;
 app.curCounter = null;
 
 app.init = function () {
@@ -3506,6 +3506,8 @@ function countryLabels(){
 
     function createPopups(){
         overlayArray.forEach((overlay)=>{
+            let countryFlags = unsafeWindow.sgs.countryFlags;
+
             if (overlay.position) return;
 
             let to = sgs.reverse({lat: overlay.to.lat(), lng: overlay.to.lng()});
