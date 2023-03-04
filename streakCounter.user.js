@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         3d streak counter v1.3
+// @name         3d streak counter v1.4
 // @namespace    GeoGuessr scripts
-// @version      1.3
+// @version      1.4
 // @description  Show possible countries to guess.
 // @include      https://*geoguessr.com/*
 // @license      MIT
@@ -2434,9 +2434,9 @@ function makePoly(country, color, map, opacity) {
     //return makeMarker(country, color, map, opacity);
     let coords = [];
     let n = 0;
-    let ca = usw.sgs.compiledPolygons;
+   // let ca = usw.sgs.compiledPolygons;
 	
-   // let ca = usw.sgs.ggPolygons;
+    let ca = usw.sgs.ggPolygons;
 
     country = (typeof country === 'string')? country.toLowerCase(): country;
 
