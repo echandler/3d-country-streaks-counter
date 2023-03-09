@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         3d streak counter v1.4
+// @name         3d streak counter v1.5
 // @namespace    GeoGuessr scripts
-// @version      1.4
+// @version      1.5
 // @description  Show possible countries to guess.
 // @include      https://*geoguessr.com/*
 // @license      MIT
@@ -2534,7 +2534,7 @@ usw.app = app;
 
 app.openMapOnWrongAnswer = true; // Change this on commit to false and delete this comment.
 
-app.showPlayer = localStorage["streakShowPlayer"] == "true" ? true : false;
+app.showPlayer = true; // TODO: localStorage["streakShowPlayer"] == "true" ? true : false;
 app.wrongAnswerlist = [];
 app.lastGuess = [0, 0];
 app.lastClickPos = {lat: 0, lng: 0};
