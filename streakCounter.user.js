@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         3d streak counter v1.5
+// @name         3d streak counter v1.6
 // @namespace    GeoGuessr scripts
-// @version      1.5
+// @version      1.6
 // @description  Show possible countries to guess.
 // @include      https://*geoguessr.com/*
 // @license      MIT
@@ -1969,7 +1969,7 @@ class correctGuessAnimation {
     makeCamera(){
         this.camera = new this.THREE.PerspectiveCamera( 20, window.innerWidth / window.innerHeight, 1, 6500 );
 
-        this.camera.position.set(0, 0, 2000);
+        this.camera.position.set(0, 0, 700);
 
         this.cameraTarget = new this.THREE.Vector3( 0, 0, 0 );
     }
@@ -1978,19 +1978,14 @@ class correctGuessAnimation {
         this.group.remove( this.textMesh );
         this.createText1(textSize);
     }
-    
-  //  unload(){
-  //     this.container.parentElement.removeChild(this.container);
-
-  //  }
 
     update() {
            
-        this.camera.position.z -= 240;
+        this.camera.position.z += 240;
 
-        if (this.camera.position.z < 600){
+        if (this.camera.position.z > 2000){
 
-            this.camera.position.z = 2000;
+           this.camera.position.z = 700;
 
             this.num++;
 
